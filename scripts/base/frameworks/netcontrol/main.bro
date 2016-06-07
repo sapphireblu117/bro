@@ -907,6 +907,7 @@ function rule_added_impl(r: Rule, p: PluginState, exists: bool, msg: string &def
 	if ( exists )
 		{
 		add rule$_no_expire_plugins[p$_id];
+		print fmt("%f %f %s ADD EXISTS", network_time(), current_time(), r$id);
 		log_rule(r, "ADD", EXISTS, p, msg);
 		}
 	else

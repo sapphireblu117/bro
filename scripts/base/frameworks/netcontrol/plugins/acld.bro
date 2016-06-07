@@ -104,6 +104,7 @@ event NetControl::acld_rule_added(id: count, r: Rule, msg: string)
 
 event NetControl::acld_rule_exists(id: count, r: Rule, msg: string)
 	{
+	print fmt("%f %f %s ACLD RULE EXISTS", network_time(), current_time(), r$id);
 	if ( id !in netcontrol_acld_id )
 		{
 		Reporter::error(fmt("NetControl acld plugin with id %d not found, aborting", id));
