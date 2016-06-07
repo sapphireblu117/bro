@@ -776,6 +776,7 @@ function add_rule_impl(rule: Rule) : string
 			accepted = T;
 			priority = p$_priority;
 			log_rule(rule, "ADD", REQUESTED, p);
+			print fmt("%f %f %s ADD REQUESTED", network_time(), current_time(), rule$id);
 
 			add rule$_plugin_ids[p$_id];
 			}
@@ -909,7 +910,10 @@ function rule_added_impl(r: Rule, p: PluginState, exists: bool, msg: string &def
 		log_rule(r, "ADD", EXISTS, p, msg);
 		}
 	else
+		{
+		print fmt("%f %f %s ADD SUCCEEDED", network_time(), current_time(), r$id);
 		log_rule(r, "ADD", SUCCEEDED, p, msg);
+		}
 
 	add rule$_active_plugin_ids[p$_id];
 	if ( |rule$_plugin_ids| == |rule$_active_plugin_ids| )

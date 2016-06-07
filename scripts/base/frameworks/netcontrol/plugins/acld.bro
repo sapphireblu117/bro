@@ -90,6 +90,7 @@ const acld_add_to_remove: table[string] of string = {
 
 event NetControl::acld_rule_added(id: count, r: Rule, msg: string)
 	{
+	print fmt("%f %f %s ACLD RULE ADDED", network_time(), current_time(), r$id);
 	if ( id !in netcontrol_acld_id )
 		{
 		Reporter::error(fmt("NetControl acld plugin with id %d not found, aborting", id));
@@ -235,6 +236,7 @@ function acld_check_rule(p: PluginState, r: Rule) : bool
 
 function acld_add_rule_fun(p: PluginState, r: Rule) : bool
 	{
+	print fmt("%f %f %s ACLD ADD RULE", network_time(), current_time(), r$id);	
 	if ( ! acld_check_rule(p, r) )
 		return F;
 
